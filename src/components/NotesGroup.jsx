@@ -11,7 +11,23 @@ function NotesGroup() {
         <button className={styles["create-notes-group-btn"]}>
           <FontAwesomeIcon icon={faPlus} /> Create Notes Group
         </button>
-        <div className={styles["notes-group-container"]}></div>
+        <div className={styles["notes-group-container"]}>
+          <div className={styles["new-group-1"]}>
+            <div className={styles["notes-group-icon"]}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="63"
+                height="63"
+                viewBox="0 0 63 63"
+                fill="none"
+              >
+              </svg>
+              <span>NG</span>
+            </div>
+
+            <div className={styles["notes-group-name"]}>New Group 1</div>
+          </div>
+        </div>
       </div>
     </div>
   );

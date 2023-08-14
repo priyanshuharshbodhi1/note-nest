@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Eczar&family=Inconsolata:wght@500&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -7,12 +7,68 @@
   font-family: "Roboto", sans-serif;
 }
 
-.main-container{
-    padding: 2rem 1rem;
+.main-container {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-logo {
+  font-family: "Eczar", serif;
+  color: #000;
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.03938rem;
 }
 
 .container {
   padding: 1rem 2rem;
 }
 
+button {
+  border-radius: 2.33238rem;
+  background: #000;
+  color: #fff;
+  font-size: 1.2595rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.02519rem;
+  border: none;
+  padding: 0.6rem 2rem;
+}
 
+button:hover {
+  background: #fff;
+  color: #000;
+}
+
+.notes-group-container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.new-group-1 {
+    display: flex;
+    align-items: center;
+}
+
+.notes-group-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 63px;
+    height: 63px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='63' height='63' viewBox='0 0 63 63' fill='none'%3E%3Ccircle cx='31.0073' cy='31.0073' r='31.0073' fill='%230047FF'/%3E%3C/svg%3E") center/cover no-repeat;
+  }
+  
+  .notes-group-icon span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    padding: 5px 10px;
+    margin-right: 0.4rem;
+  }
+  
