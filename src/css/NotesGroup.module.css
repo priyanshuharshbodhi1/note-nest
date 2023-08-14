@@ -61,14 +61,52 @@ button:hover {
     justify-content: center;
     width: 63px;
     height: 63px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='63' height='63' viewBox='0 0 63 63' fill='none'%3E%3Ccircle cx='31.0073' cy='31.0073' r='31.0073' fill='%230047FF'/%3E%3C/svg%3E") center/cover no-repeat;
+    border-radius: 50%;
+    /* background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='63' height='63' viewBox='0 0 63 63' fill='none'%3E%3Ccircle cx='31.0073' cy='31.0073' r='31.0073' fill='%230047FF'/%3E%3C/svg%3E") center/cover no-repeat; */
   }
   
   .notes-group-icon span {
     font-size: 1.2rem;
-    font-weight: 600;
     color: white;
     padding: 5px 10px;
-    margin-right: 0.4rem;
+  }
+  
+
+
+  .modal-overlay {
+    background-color: bisque;
+    border-radius: 12px;
+
+  }
+
+.modal{
+    
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.group-name-input-section{
+    display: flex;
+    gap: 5px;
+}
+
+.color-picker-section {
+    display: flex;
+    gap: 4px;
+}
+  .color-picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    width: 100%; /* Adjust the width as needed */
+  }
+  
+  .color-option {
+    width: 20px; /* Adjust the width as needed */
+    height: 20px; /* Adjust the height as needed */
+    border-radius: 50%;
+    cursor: pointer;
   }
   
