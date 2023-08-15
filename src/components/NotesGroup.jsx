@@ -37,13 +37,14 @@ function NotesGroup() {
   return (
     <div className={styles["main-container"]}>
       <div className={styles["app-logo"]}>Notes Nest</div>
+      <button
+        className={styles["create-notes-group-btn"]}
+        onClick={() => setShowModal(true)}
+        style={{ whiteSpace: "nowrap" }}
+      >
+        <FontAwesomeIcon icon={faPlus} /> Create Notes Group
+      </button>
       <div className={styles["container"]}>
-        <button
-          className={styles["create-notes-group-btn"]}
-          onClick={() => setShowModal(true)}
-        >
-          <FontAwesomeIcon icon={faPlus} /> Create Notes Group
-        </button>
         <div className={styles["notes-group-container"]}>
           {notesGroups.map((group, index) => (
             <div key={index} className={styles["new-group-1"]}>
@@ -63,20 +64,22 @@ function NotesGroup() {
                         : ""
                     )
                     .join("")
-                    .toUpperCase()}
+                    .toUpperCase()
+                    }
                 </span>
               </div>
-              <div className={styles["notes-group-name"]}>{group.name}</div>
+              <div className={styles["notes-group-name"]}>{group.name.length > 15 ? group.name.substring(0, 15) + "..." : group.name}</div>
             </div>
           ))}
         </div>
       </div>
 
+      {/* modal-diaplay ----------------------------------------------------*/}
       {showModal && (
-        <div className={styles["modal-overlay"]}>
+        <div className={`${styles["modal-overlay"]} ${styles["centered"]}`}>
           <div className={styles["modal"]}>
             <h2>Create New Notes Group</h2>
-            <div className="group-name-input-section">
+            <div className={styles["group-name-input-section"]}>
               <label htmlFor="group-name">Group Name:</label>
               <input
                 type="text"
@@ -87,7 +90,7 @@ function NotesGroup() {
               />
             </div>
             <div className={styles["color-picker-section"]}>
-              <label>Choose Color:</label>
+              <label>Color:</label>
               <div className={styles["color-picker"]}>
                 {colors.map((color) => (
                   <div
@@ -99,10 +102,14 @@ function NotesGroup() {
                 ))}
               </div>
             </div>
-            <button onClick={createNotesGroup}>Create</button>
+            <div className={styles["modal-btn-container"]}>
+              <button onClick={createNotesGroup}>Create</button>
+              <button onClick={() => setShowModal(false)}>Cancel</button>
+            </div>
           </div>
         </div>
       )}
+      {/* -------------------------------------------------------- */}
     </div>
   );
 }

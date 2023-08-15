@@ -24,7 +24,7 @@
 }
 
 .container {
-  padding: 1rem 2rem;
+  padding: 1rem 1.4rem;
 }
 
 button {
@@ -47,66 +47,120 @@ button:hover {
 .notes-group-container {
   display: flex;
   flex-direction: column;
+  gap: .5rem;
 }
 
-
 .new-group-1 {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
 }
 
 .notes-group-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 63px;
-    height: 63px;
-    border-radius: 50%;
-    /* background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='63' height='63' viewBox='0 0 63 63' fill='none'%3E%3Ccircle cx='31.0073' cy='31.0073' r='31.0073' fill='%230047FF'/%3E%3C/svg%3E") center/cover no-repeat; */
-  }
-  
-  .notes-group-icon span {
-    font-size: 1.2rem;
-    color: white;
-    padding: 5px 10px;
-  }
-  
-
-
-  .modal-overlay {
-    background-color: bisque;
-    border-radius: 12px;
-
-  }
-
-.modal{
-    
-    padding: 1.5rem 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  /* background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='63' height='63' viewBox='0 0 63 63' fill='none'%3E%3Ccircle cx='31.0073' cy='31.0073' r='31.0073' fill='%230047FF'/%3E%3C/svg%3E") center/cover no-repeat; */
 }
 
-.group-name-input-section{
-    display: flex;
-    gap: 5px;
+.notes-group-icon span {
+  font-size: 1.2rem;
+  color: white;
+  padding: 5px 10px;
+}
+
+.notes-group-name {
+  color: #000;
+  font-family: "Roboto" , sans-serif;
+  font-size: 1.16275rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.02325rem;
+}
+
+.modal-overlay {
+  background-color: bisque;
+  border-radius: 12px;
+  max-width: fit-content;
+  min-width: max-content;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+
+
+.modal {
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.group-name-input-section {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.group-name-input-section > input {
+  border: none;
+  border: 1px solid #545454;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  border-radius: 10px;
+  width: 10rem;
+  padding: 1.5px;
+}
+
+.group-name-input-section > input::placeholder {
+  padding-left: 5px;
+  padding: 8x;
 }
 
 .color-picker-section {
-    display: flex;
-    gap: 4px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
 }
-  .color-picker {
+.color-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  width: 100%; /* Adjust the width as needed */
+}
+
+.color-option {
+  width: 20px; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.modal >.modal-btn-container> button {
+  align-self: center;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 0.2rem 1.5rem;
+
+}
+
+.modal-btn-container {
+    margin-top: 2rem;
     display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    width: 100%; /* Adjust the width as needed */
-  }
-  
-  .color-option {
-    width: 20px; /* Adjust the width as needed */
-    height: 20px; /* Adjust the height as needed */
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  
+    gap: 1rem;
+    justify-content: space-evenly;
+}
+
+
+
