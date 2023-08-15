@@ -47,7 +47,7 @@ button:hover {
 .notes-group-container {
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: .8rem;
 }
 
 .new-group-1 {
@@ -60,8 +60,8 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   /* background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='63' height='63' viewBox='0 0 63 63' fill='none'%3E%3Ccircle cx='31.0073' cy='31.0073' r='31.0073' fill='%230047FF'/%3E%3C/svg%3E") center/cover no-repeat; */
 }
@@ -79,7 +79,7 @@ button:hover {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  letter-spacing: 0.02325rem;
+  letter-spacing: 0.05325rem;
 }
 
 .modal-overlay {

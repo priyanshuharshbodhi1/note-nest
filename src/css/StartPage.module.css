@@ -4,7 +4,19 @@
     box-sizing: border-box;
 }
 
+.main-container{
+    min-height: 100vh;
+    display: flex;
+}
+
 .notesgroup{
-    max-width: 400px;
+    max-width: 370px;
     overflow: hidden;
+    
+}
+
+.notesdisplay{
+    background: #F7ECDC;
+    
+    flex: 1;
 }
