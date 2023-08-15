@@ -11,6 +11,8 @@
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
+  /* filter: blur(3px); Apply blur effect */
+  /* background-color: rgba(128, 128, 128, 0.7);  */
 }
 
 .app-logo {
@@ -83,7 +85,7 @@ button:hover {
 }
 
 .modal-overlay {
-  background-color: bisque;
+  background-color: #fff;
   border-radius: 12px;
   max-width: fit-content;
   min-width: max-content;

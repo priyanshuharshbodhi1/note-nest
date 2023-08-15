@@ -10,13 +10,14 @@
 }
 
 .notesgroup{
-    max-width: 370px;
+    /* max-width: 500px; */
     overflow: hidden;
     
 }
 
 .notesdisplay{
     background: #F7ECDC;
-    
     flex: 1;
+    max-width: 75%;
 }
+

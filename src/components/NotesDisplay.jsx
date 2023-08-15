@@ -2,10 +2,19 @@ import React, { useState } from "react";
 import styles from "../css/NotesDisplay.module.css";
 import defaultImage from "../assets/images/default-view.png";
 import lock from "../assets/images/privacy-lock.png";
+import postBtn from "../assets/images/post.png";
 
-function NotesDisplay() {
+function NotesDisplay({ showDefaultView, selectedGroup }) {
   //typing input
   const [message, setMessage] = useState("");
+  const [savedNotes, setSavedNotes] = useState([]);
+
+  const handleTextareaKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handlePostClick();
+    }
+  };
 
   const handleInputChange = (e) => {
     setMessage(e.target.value);
@@ -13,38 +22,64 @@ function NotesDisplay() {
 
   const handlePostClick = () => {
     if (message.trim() !== "") {
-      // Do something with the posted message, e.g., send it to a server
-      console.log("Posted:", message);
+      const currentDate = new Date();
+
+      const optionsDate = { day: "numeric", month: "long", year: "numeric" };
+      const formattedDate = currentDate.toLocaleDateString(
+        undefined,
+        optionsDate
+      );
+
+      const optionsTime = { hour: "numeric", minute: "numeric", hour12: true };
+      const formattedTime = currentDate.toLocaleTimeString(
+        undefined,
+        optionsTime
+      );
+
+      const newNote = {
+        date: formattedDate,
+        time: formattedTime,
+        message: message,
+      };
+      setSavedNotes((prevNotes) => [...prevNotes, newNote]);
       setMessage("");
     }
   };
+
+  //for typepad
+
   return (
     <div className={styles["main-container"]}>
-      <div className={styles["default-view"]}>
-        <img
-          src={defaultImage}
-          alt="Default View"
-          className={styles["image"]}
-        />
-        <div className={styles["app-logo"]}>Notes Nest</div>
-        <div className={styles["app-description"]}>
-          Send and receive messages without keeping your phone online. Use
-          Pocket Notes on up to 4 linked devices and 1 mobile phone
+      {showDefaultView ? (
+        <div className={styles["default-view"]}>
+          <img
+            src={defaultImage}
+            alt="Default View"
+            className={styles["image"]}
+          />
+          <div className={styles["app-logo"]}>Notes Nest</div>
+          <div className={styles["app-description"]}>
+            Send and receive messages without keeping your phone online. Use
+            Pocket Notes on up to 4 linked devices and 1 mobile phone
+          </div>
+          <div className={styles["encription-para"]}>
+            <img
+              src={lock}
+              alt="Default View"
+              className={styles["lock-image"]}
+            />{" "}
+            end-to-end encrypted
+          </div>
         </div>
-        <div className={styles["encription-para"]}>
-          <img src={lock} alt="Default View" className={styles["lock-image"]} />{" "}
-          end-to-end encrypted
-        </div>
-      </div>
-      <div className={styles["note-group-view"]}>
-        <div className={styles["note-group"]}>
+      ) : (
+        <div className={styles["note-group-view"]}>
           <div className={styles["note-group-header"]}>
-            {/* <div
+            <div
               className={styles["notes-group-icon"]}
-              style={{ backgroundColor: group.color }}
+              style={{ backgroundColor: selectedGroup.color }}
             >
               <span>
-                {group.name
+                {selectedGroup.name
                   .split(" ")
                   .filter((word) => word.length > 0)
                   .map((word, index, words) =>
@@ -59,28 +94,48 @@ function NotesDisplay() {
               </span>
             </div>
             <div className={styles["notes-group-name"]}>
-              {group.name.length > 15
-                ? group.name.substring(0, 15) + "..."
-                : group.name} 
-             </div> */}
+              {selectedGroup.name.length > 35
+                ? selectedGroup.name.substring(0, 35) + "..."
+                : selectedGroup.name}
+            </div>
           </div>
           <div className={styles["saved-notes-container"]}>
-            <div className={styles["saved-notes"]}></div>
+            {savedNotes.map((note, index) => (
+              <div className={styles["saved-notes"]} key={index}>
+                <div className={styles["date-time-box"]}>
+                  <div className={styles["date"]}>{note.date}</div>
+                  <div className={styles["time"]}>{note.time}</div>
+                </div>
+                <div className={styles["note-box"]}>
+                  <div className={styles["note-message"]}>{note.message}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className={styles["note-input-typepad"]}>
+            <div className={styles["textarea-wrapper"]}>
+              <textarea
+                name=""
+                id=""
+                cols="30"
+                rows="5"
+                type="text"
+                value={message}
+                onKeyDown={handleTextareaKeyDown}
+                onChange={handleInputChange}
+                placeholder="Type your message here ........"
+                className={styles["typing-input"]}
+              ></textarea>
+            </div>
+            <img
+              src={postBtn}
+              alt="Default View"
+              className={styles["post-btn"]}
+              onClick={handlePostClick}
+            />
           </div>
         </div>
-        <div className={styles["note-input-typepad"]}>
-          <input
-            type="text"
-            value={message}
-            onChange={handleInputChange}
-            placeholder="Type your message..."
-            className={styles["typing-input"]}
-          />
-          <button onClick={handlePostClick} className={styles["post-button"]}>
-            Post
-          </button>
-        </div>
-      </div>
+      )}
     </div>
   );
 }

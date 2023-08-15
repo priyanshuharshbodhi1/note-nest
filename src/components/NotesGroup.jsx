@@ -3,7 +3,7 @@ import styles from "../css/NotesGroup.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-function NotesGroup() {
+function NotesGroup({ onGroupClick }) {
   const [showModal, setShowModal] = useState(false);
   const [groupName, setGroupName] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
@@ -51,6 +51,7 @@ function NotesGroup() {
               <div
                 className={styles["notes-group-icon"]}
                 style={{ backgroundColor: group.color }}
+                onClick={() => onGroupClick(group)}
               >
                 <span>
                   {group.name

@@ -32,7 +32,7 @@
   font-size: 1.1rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 1.5rem; /* 145.455% */
+  line-height: 1.5rem;
   letter-spacing: 0.0275rem;
 }
 
@@ -43,7 +43,6 @@
   justify-content: center;
   gap: 1rem;
   padding: 2rem 0;
-  display: none;
 }
 
 .default-view > img {
@@ -51,17 +50,129 @@
   height: auto;
 }
 
+.saved-notes-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 3rem;
+  padding: 3rem 4rem;
+  overflow-y: auto;
+  margin-bottom: auto;
+  height: 100vh;
+}
+
+.date-time-box {
+    white-space: nowrap; 
+}
+
+.note-message {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  line-height: 1.3rem;
+
+}
+
+.saved-notes {
+    display: flex;
+    gap: 1.7rem;
+}
+
+.date-time-box {
+    line-height: 1.3rem;
+}
+
+.note-group-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 100vh;
+}
+
+.note-group-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.5rem;
+  background: #e8e8e8;
+}
+
+.notes-group-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.notes-group-icon > span {
+  font-size: 1.2rem;
+  color: white;
+  padding: 5px 10px;
+}
+
+.notes-group-name {
+  color: #272626;
+  font-family: Roboto;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.03rem;
+}
+
 .note-input-typepad {
   display: flex;
   background-color: #e8e8e8;
-  padding: 0.5rem;
-  height: 20%;
+  padding: 0.8rem;
+  position: relative;
 }
 
-.note-input-typepad > input {
+.note-input-typepad > .textarea-wrapper > textarea {
   border-radius: 5px;
-  height: 6rem;
+  min-height: 1.6rem;
   width: 100%;
   border: none;
-  text-overflow: ellipsis;
+  overflow: hidden;
+
+  font-size: 1rem;
+  padding: 9px;
+  padding-right: 50px;
+  outline: none;
+  overflow-y: auto;
+  resize: none;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.textarea-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.post-btn {
+  position: absolute;
+  bottom: 27px;
+  right: 32px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.typing-input {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #f0f0f0;
+}
+
+.typing-input::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+.typing-input::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 8px;
 }
