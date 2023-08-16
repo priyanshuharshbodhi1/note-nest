@@ -62,6 +62,11 @@ button:hover {
   gap: 1rem;
 }
 
+.selected-group {
+  background-color: #F7ECDC;
+  border-radius: 29px;
+}
+
 .notes-group-icon {
   display: flex;
   align-items: center;

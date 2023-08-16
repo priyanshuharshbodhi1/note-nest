@@ -3,19 +3,19 @@ import styles from "../css/NotesGroup.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-function NotesGroup({ onGroupClick, setSelectedGroup }) {
+function NotesGroup({ onGroupClick, setSelectedGroup,selectedGroup }) {
   const [showModal, setShowModal] = useState(false);
   const [groupName, setGroupName] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
   const [notesGroups, setNotesGroups] = useState([]);
 
   const colors = [
-    "#FF5733",
-    "#FFC300",
-    "#36B55C",
-    "#3498DB",
-    "#9B59B6",
-    "#E74C3C",
+    "#B38BFA",
+    "#FF79F2",
+    "#43E6FC",
+    "#F19576",
+    "#0047FF",
+    "#6691FF",
   ];
 
   const createNotesGroup = () => {
@@ -58,7 +58,9 @@ function NotesGroup({ onGroupClick, setSelectedGroup }) {
       <div className={styles["container"]}>
         <div className={styles["notes-group-container"]}>
           {notesGroups.map((group, index) => (
-            <div key={index} className={styles["new-group-1"]}>
+            <div key={index} className={`${styles["new-group-1"]} ${
+              selectedGroup === group ? styles["selected-group"] : ""
+            }`}>
               <div
                 className={styles["notes-group-icon"]}
                 style={{ backgroundColor: group.color, cursor: "pointer" }}

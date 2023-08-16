@@ -29,7 +29,7 @@ function StartPage() {
   return (
     <div className={`${styles["main-container"]} `}>
       <div className={styles["notesgroup"]}>
-        <NotesGroup onGroupClick={handleGroupClick} setSelectedGroup={setSelectedGroup}/>
+        <NotesGroup onGroupClick={handleGroupClick} setSelectedGroup={setSelectedGroup} selectedGroup={selectedGroup}/>
       </div>
       <div className={styles["notesdisplay"]}>
         <NotesDisplay showDefaultView={showDefaultView} selectedGroup={selectedGroup}/>
