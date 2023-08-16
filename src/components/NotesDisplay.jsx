@@ -95,6 +95,9 @@ function NotesDisplay({ showDefaultView, selectedGroup, isSmallScreen }) {
       ) : (
         <div className={styles["note-group-view"]}>
           <div className={styles["note-group-header"]}>
+          {isSmallScreen ? (
+            <button className={styles["note-viewer"]}>Back</button>
+          ) : null}
             <div
               className={styles["notes-group-icon"]}
               style={{ backgroundColor: selectedGroup.color }}

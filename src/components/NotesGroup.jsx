@@ -3,7 +3,13 @@ import styles from "../css/NotesGroup.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-function NotesGroup({ onGroupClick, setSelectedGroup,selectedGroup }) {
+function NotesGroup({
+  onGroupClick,
+  setSelectedGroup,
+  selectedGroup,
+  isSmallScreen,
+  isLargeScreen,
+}) {
   const [showModal, setShowModal] = useState(false);
   const [groupName, setGroupName] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
@@ -58,9 +64,12 @@ function NotesGroup({ onGroupClick, setSelectedGroup,selectedGroup }) {
       <div className={styles["container"]}>
         <div className={styles["notes-group-container"]}>
           {notesGroups.map((group, index) => (
-            <div key={index} className={`${styles["new-group-1"]} ${
-              selectedGroup === group ? styles["selected-group"] : ""
-            }`}>
+            <div
+              key={index}
+              className={`${styles["new-group-1"]} ${
+                selectedGroup === group ? styles["selected-group"] : ""
+              }`}
+            >
               <div
                 className={styles["notes-group-icon"]}
                 style={{ backgroundColor: group.color, cursor: "pointer" }}
@@ -98,9 +107,11 @@ function NotesGroup({ onGroupClick, setSelectedGroup,selectedGroup }) {
               </div>
             </div>
           ))}
+          {/* {isSmallScreen ? (
+            <button className={styles["note-viewer"]}>Open Note</button>
+          ) : null} */}
         </div>
       </div>
-      
 
       {/* modal-diaplay ----------------------------------------------------*/}
       {showModal && (
@@ -142,7 +153,6 @@ function NotesGroup({ onGroupClick, setSelectedGroup,selectedGroup }) {
         </div>
       )}
       {/* -------------------------------------------------------- */}
-
     </div>
   );
 }

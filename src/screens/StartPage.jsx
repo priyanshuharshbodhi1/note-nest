@@ -17,11 +17,13 @@ function StartPage() {
 
   useEffect(() => {
     // Load savedNotesMap from local storage
-    const savedNotesMapData = JSON.parse(localStorage.getItem('savedNotesMap')) || {};
+    const savedNotesMapData =
+      JSON.parse(localStorage.getItem("savedNotesMap")) || {};
     setSavedNotesMap(new Map(Object.entries(savedNotesMapData)));
 
     // Load notesGroups from local storage
-    const notesGroupsData = JSON.parse(localStorage.getItem('notesGroups')) || [];
+    const notesGroupsData =
+      JSON.parse(localStorage.getItem("notesGroups")) || [];
     setNotesGroups(notesGroupsData);
 
     // Add event listener for window resize
@@ -37,12 +39,19 @@ function StartPage() {
   return (
     <div className={`${styles["main-container"]} `}>
       <div className={styles["notesgroup"]}>
-        <NotesGroup onGroupClick={handleGroupClick} setSelectedGroup={setSelectedGroup} selectedGroup={selectedGroup}/>
+        <NotesGroup
+          onGroupClick={handleGroupClick}
+          setSelectedGroup={setSelectedGroup}
+          selectedGroup={selectedGroup}
+          isSmallScreen={isSmallScreen}
+        />
       </div>
       <div className={styles["notesdisplay"]}>
-        {!isSmallScreen || selectedGroup ? (
-          <NotesDisplay showDefaultView={showDefaultView} selectedGroup={selectedGroup} isSmallScreen={isSmallScreen} />
-        ) : null}
+          <NotesDisplay
+            showDefaultView={showDefaultView}
+            selectedGroup={selectedGroup}
+            isSmallScreen={isSmallScreen}
+          />
       </div>
     </div>
   );
