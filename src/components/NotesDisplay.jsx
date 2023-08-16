@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../css/NotesDisplay.module.css";
 import defaultImage from "../assets/images/default-view.png";
 import lock from "../assets/images/privacy-lock.png";
@@ -7,7 +7,15 @@ import postBtn from "../assets/images/post.png";
 function NotesDisplay({ showDefaultView, selectedGroup }) {
   //typing input
   const [message, setMessage] = useState("");
-  const [savedNotes, setSavedNotes] = useState([]);
+  const [savedNotesMap, setSavedNotesMap] = useState(new Map());
+  
+
+  useEffect(() => {
+    // Load savedNotesMap from local storage
+    const savedNotesMapData =
+      JSON.parse(localStorage.getItem("savedNotesMap")) || {};
+    setSavedNotesMap(new Map(Object.entries(savedNotesMapData)));
+  }, []);
 
   const handleTextareaKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -41,8 +49,21 @@ function NotesDisplay({ showDefaultView, selectedGroup }) {
         time: formattedTime,
         message: message,
       };
-      setSavedNotes((prevNotes) => [...prevNotes, newNote]);
+      const updatedNotesMap = new Map(savedNotesMap);
+      if (!updatedNotesMap.has(selectedGroup.name)) {
+        updatedNotesMap.set(selectedGroup.name, [newNote]);
+      } else {
+        updatedNotesMap.get(selectedGroup.name).push(newNote);
+      }
+
+      setSavedNotesMap(updatedNotesMap);
       setMessage("");
+
+      // Save savedNotesMap to localStorage
+      localStorage.setItem(
+        "savedNotesMap",
+        JSON.stringify(Object.fromEntries(updatedNotesMap))
+      );
     }
   };
 
@@ -100,7 +121,7 @@ function NotesDisplay({ showDefaultView, selectedGroup }) {
             </div>
           </div>
           <div className={styles["saved-notes-container"]}>
-            {savedNotes.map((note, index) => (
+            {savedNotesMap.get(selectedGroup.name)?.map((note, index) => (
               <div className={styles["saved-notes"]} key={index}>
                 <div className={styles["date-time-box"]}>
                   <div className={styles["date"]}>{note.date}</div>

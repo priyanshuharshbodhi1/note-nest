@@ -2,11 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import StartPage from "./screens/StartPage.jsx";
+import NotesDisplayMobile from "./components/NotesDisplayMobile.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <StartPage />,
+  },
+  {
+    path: "/notesdisplaymobile",
+    element: <NotesDisplayMobile />,
   }
 ]);
 

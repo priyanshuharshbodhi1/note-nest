@@ -23,9 +23,11 @@
   margin-top: auto;
 }
 
+.default-view {
+    height: 100vh;
+}
+
 .app-description {
-  /* margin-left: 14rem;
-    margin-right: 14rem; */
   width: 60%;
   color: #292929;
   font-family: "Roboto", sans-serif;
@@ -42,7 +44,7 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 .default-view > img {
@@ -53,8 +55,8 @@
 .saved-notes-container {
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  gap: 3rem;
+  justify-content: flex-start;
+  gap: 1.5rem;
   padding: 3rem 4rem;
   overflow-y: auto;
   margin-bottom: auto;
@@ -120,13 +122,14 @@
   font-weight: 600;
   line-height: normal;
   letter-spacing: 0.03rem;
+  white-space: nowrap; 
+
 }
 
 .note-input-typepad {
   display: flex;
   background-color: #e8e8e8;
   padding: 0.8rem;
-  position: relative;
 }
 
 .note-input-typepad > .textarea-wrapper > textarea {
@@ -148,7 +151,7 @@
 }
 
 .textarea-wrapper {
-  position: relative;
+  /* position: relative; */
   flex: 1;
 }
 
@@ -176,3 +179,4 @@
   background-color: #ccc;
   border-radius: 8px;
 }
+

@@ -11,6 +11,7 @@
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
+  height: 100vh;
   /* filter: blur(3px); Apply blur effect */
   /* background-color: rgba(128, 128, 128, 0.7);  */
 }
@@ -18,7 +19,7 @@
 .app-logo {
   font-family: "Eczar", serif;
   color: #000;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -27,6 +28,8 @@
 
 .container {
   padding: 1rem 1.4rem;
+  height: 100%;
+  overflow-y: scroll;
 }
 
 button {
@@ -39,11 +42,12 @@ button {
   letter-spacing: 0.02519rem;
   border: none;
   padding: 0.6rem 2rem;
+  box-sizing: border-box;
 }
 
 button:hover {
-  background: #fff;
-  color: #000;
+  background: #4c4b4b;
+  /* transform:  ; */
 }
 
 .notes-group-container {
@@ -55,7 +59,7 @@ button:hover {
 .new-group-1 {
   display: flex;
   align-items: center;
-  gap: 1.4rem;
+  gap: 1rem;
 }
 
 .notes-group-icon {
@@ -65,7 +69,6 @@ button:hover {
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  /* background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='63' height='63' viewBox='0 0 63 63' fill='none'%3E%3Ccircle cx='31.0073' cy='31.0073' r='31.0073' fill='%230047FF'/%3E%3C/svg%3E") center/cover no-repeat; */
 }
 
 .notes-group-icon span {
@@ -81,7 +84,20 @@ button:hover {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  letter-spacing: 0.05325rem;
+  letter-spacing: 0.04325rem;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+  backdrop-filter: blur(5px); /* Apply a blur effect to the backdrop */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal-overlay {
@@ -94,6 +110,10 @@ button:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px,
+  rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px,
+  rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px,
+  rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
 
@@ -120,11 +140,11 @@ button:hover {
   font-family: "Roboto", sans-serif;
   border-radius: 10px;
   width: 10rem;
-  padding: 1.5px;
+  padding: 1.5px 8px;
 }
 
 .group-name-input-section > input::placeholder {
-  padding-left: 5px;
+  
   padding: 8x;
 }
 
@@ -137,12 +157,16 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
-  width: 100%; /* Adjust the width as needed */
+  width: 100%; 
+}
+
+.selected-color {
+  border: 1.5px solid black;
 }
 
 .color-option {
-  width: 20px; /* Adjust the width as needed */
-  height: 20px; /* Adjust the height as needed */
+  width: 20px; 
+  height: 20px; 
   border-radius: 50%;
   cursor: pointer;
 }

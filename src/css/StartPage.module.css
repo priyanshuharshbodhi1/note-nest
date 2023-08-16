@@ -21,3 +21,13 @@
     max-width: 75%;
 }
 
+@media (max-width: 520px){
+    .notesdisplay{
+        display: none;
+    }
+    .notesgroup{
+        width: 100vh;
+        min-width: 300px;
+    }
+}
+
