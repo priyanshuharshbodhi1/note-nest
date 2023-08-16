@@ -12,8 +12,6 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  /* filter: blur(3px); Apply blur effect */
-  /* background-color: rgba(128, 128, 128, 0.7);  */
 }
 
 .app-logo {

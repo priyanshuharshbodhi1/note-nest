@@ -100,6 +100,7 @@ function NotesGroup({ onGroupClick, setSelectedGroup,selectedGroup }) {
           ))}
         </div>
       </div>
+      
 
       {/* modal-diaplay ----------------------------------------------------*/}
       {showModal && (
@@ -141,6 +142,7 @@ function NotesGroup({ onGroupClick, setSelectedGroup,selectedGroup }) {
         </div>
       )}
       {/* -------------------------------------------------------- */}
+
     </div>
   );
 }
