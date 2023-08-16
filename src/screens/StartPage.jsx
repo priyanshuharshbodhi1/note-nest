@@ -1,15 +1,14 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import NotesDisplay from "../components/NotesDisplay";
 import NotesGroup from "../components/NotesGroup";
 import styles from "../css/StartPage.module.css";
 
 function StartPage() {
-
   const [showDefaultView, setShowDefaultView] = useState(true);
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [savedNotesMap, setSavedNotesMap] = useState(new Map());
   const [notesGroups, setNotesGroups] = useState([]);
-  
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 450);
 
   const handleGroupClick = (group) => {
     setSelectedGroup(group);
@@ -24,6 +23,15 @@ function StartPage() {
     // Load notesGroups from local storage
     const notesGroupsData = JSON.parse(localStorage.getItem('notesGroups')) || [];
     setNotesGroups(notesGroupsData);
+
+    // Add event listener for window resize
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 450);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
@@ -32,7 +40,9 @@ function StartPage() {
         <NotesGroup onGroupClick={handleGroupClick} setSelectedGroup={setSelectedGroup} selectedGroup={selectedGroup}/>
       </div>
       <div className={styles["notesdisplay"]}>
-        <NotesDisplay showDefaultView={showDefaultView} selectedGroup={selectedGroup}/>
+        {!isSmallScreen || selectedGroup ? (
+          <NotesDisplay showDefaultView={showDefaultView} selectedGroup={selectedGroup} isSmallScreen={isSmallScreen} />
+        ) : null}
       </div>
     </div>
   );

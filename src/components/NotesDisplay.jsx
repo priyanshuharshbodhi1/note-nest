@@ -4,7 +4,7 @@ import defaultImage from "../assets/images/default-view.png";
 import lock from "../assets/images/privacy-lock.png";
 import postBtn from "../assets/images/post.png";
 
-function NotesDisplay({ showDefaultView, selectedGroup }) {
+function NotesDisplay({ showDefaultView, selectedGroup, isSmallScreen}) {
   //typing input
   const [message, setMessage] = useState("");
   const [savedNotesMap, setSavedNotesMap] = useState(new Map());
@@ -70,7 +70,7 @@ function NotesDisplay({ showDefaultView, selectedGroup }) {
   //for typepad
 
   return (
-    <div className={styles["main-container"]}>
+    <div className={`${styles["main-container"]} ${isSmallScreen ? styles["small-screen"] : ""}`}>
       {showDefaultView ? (
         <div className={styles["default-view"]}>
           <img
