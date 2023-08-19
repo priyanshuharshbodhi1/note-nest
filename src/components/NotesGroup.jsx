@@ -14,7 +14,6 @@ function NotesGroup({
   const [notesGroups, setNotesGroups] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
 
-
   const colors = [
     "#B38BFA",
     "#FF79F2",
@@ -48,7 +47,7 @@ function NotesGroup({
     setShowPopup(true);
     setTimeout(() => {
       setShowPopup(false);
-    }, 2000);
+    }, 1000);
   };
 
   useEffect(() => {
