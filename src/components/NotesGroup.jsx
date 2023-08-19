@@ -6,14 +6,14 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 function NotesGroup({
   onGroupClick,
   setSelectedGroup,
-  selectedGroup,
-  isSmallScreen,
-  isLargeScreen,
+  selectedGroup
 }) {
   const [showModal, setShowModal] = useState(false);
   const [groupName, setGroupName] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
   const [notesGroups, setNotesGroups] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
+
 
   const colors = [
     "#B38BFA",
@@ -44,6 +44,13 @@ function NotesGroup({
     }
   };
 
+  const showGroupPopup = () => {
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 2000);
+  };
+
   useEffect(() => {
     // Load notesGroups from local storage
     const notesGroupsData =
@@ -69,14 +76,18 @@ function NotesGroup({
               className={`${styles["new-group-1"]} ${
                 selectedGroup === group ? styles["selected-group"] : ""
               }`}
+              onClick={() => {
+                onGroupClick(group);
+                setSelectedGroup(group);
+                if (window.innerWidth < 520) {
+                  showGroupPopup();
+                }
+              }}
+
             >
               <div
                 className={styles["notes-group-icon"]}
                 style={{ backgroundColor: group.color, cursor: "pointer" }}
-                onClick={() => {
-                  onGroupClick(group);
-                  setSelectedGroup(group);
-                }}
               >
                 <span>
                   {group.name
@@ -95,10 +106,6 @@ function NotesGroup({
               </div>
               <div
                 className={styles["notes-group-name"]}
-                onClick={() => {
-                  onGroupClick(group);
-                  setSelectedGroup(group);
-                }}
                 style={{ cursor: "pointer" }}
               >
                 {group.name.length > 15
@@ -107,9 +114,6 @@ function NotesGroup({
               </div>
             </div>
           ))}
-          {/* {isSmallScreen ? (
-            <button className={styles["note-viewer"]}>Open Note</button>
-          ) : null} */}
         </div>
       </div>
 
@@ -152,7 +156,12 @@ function NotesGroup({
           </div>
         </div>
       )}
-      {/* -------------------------------------------------------- */}
+     {/* Popup */}
+     {showPopup && (
+        <div className={styles["popup-notification"]}>
+          Notes Group opened below
+        </div>
+      )}
     </div>
   );
 }

@@ -191,5 +191,37 @@ button:hover {
     justify-content: space-evenly;
 }
 
+.popup-notification {
+  position: fixed;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 5px;
+  animation: fadeInOut 1s ease-in-out;
+  white-space: nowrap;
 
+  
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+
+@media (max-width: 520px) {
+  .main-container{
+    padding: 1rem 1rem;
+  }
+  .container{
+    padding: 1rem .8rem;
+  }
+}
 
