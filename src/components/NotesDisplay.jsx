@@ -4,11 +4,10 @@ import defaultImage from "../assets/images/default-view.png";
 import lock from "../assets/images/privacy-lock.png";
 import postBtn from "../assets/images/post.png";
 
-function NotesDisplay({ showDefaultView, selectedGroup, isSmallScreen }) {
+function NotesDisplay({ showDefaultView, selectedGroup }) {
   //typing input
   const [message, setMessage] = useState("");
   const [savedNotesMap, setSavedNotesMap] = useState(new Map());
-  
 
   useEffect(() => {
     // Load savedNotesMap from local storage
@@ -70,7 +69,9 @@ function NotesDisplay({ showDefaultView, selectedGroup, isSmallScreen }) {
   //for typepad
 
   return (
-    <div className={`${styles["main-container"]} ${isSmallScreen ? styles["small-screen"] : ""}`}>
+    <div
+      className={styles["main-container"]}
+    >
       {showDefaultView ? (
         <div className={styles["default-view"]}>
           <img
@@ -95,9 +96,6 @@ function NotesDisplay({ showDefaultView, selectedGroup, isSmallScreen }) {
       ) : (
         <div className={styles["note-group-view"]}>
           <div className={styles["note-group-header"]}>
-          {isSmallScreen ? (
-            <button className={styles["note-viewer"]}>Back</button>
-          ) : null}
             <div
               className={styles["notes-group-icon"]}
               style={{ backgroundColor: selectedGroup.color }}
@@ -150,13 +148,15 @@ function NotesDisplay({ showDefaultView, selectedGroup, isSmallScreen }) {
                 placeholder="Type your message here ........"
                 className={styles["typing-input"]}
               ></textarea>
+              <div className={styles["post-btn-wrapper"]}>
+                <img
+                  src={postBtn}
+                  alt="Default View"
+                  className={styles["post-btn"]}
+                  onClick={handlePostClick}
+                />
+              </div>{" "}
             </div>
-            <img
-              src={postBtn}
-              alt="Default View"
-              className={styles["post-btn"]}
-              onClick={handlePostClick}
-            />
           </div>
         </div>
       )}

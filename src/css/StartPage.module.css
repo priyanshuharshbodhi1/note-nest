@@ -23,11 +23,15 @@
 
 @media (max-width: 520px){
     .notesdisplay{
-        display: none;
+        /* display: none; */
+        max-width: 100%;
     }
     .notesgroup{
         width: 100vh;
         min-width: 300px;
+    }
+    .main-container {
+        flex-wrap: wrap;
     }
 }
 

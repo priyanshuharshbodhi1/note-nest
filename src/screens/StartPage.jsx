@@ -8,7 +8,6 @@ function StartPage() {
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [savedNotesMap, setSavedNotesMap] = useState(new Map());
   const [notesGroups, setNotesGroups] = useState([]);
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 450);
 
   const handleGroupClick = (group) => {
     setSelectedGroup(group);
@@ -26,14 +25,6 @@ function StartPage() {
       JSON.parse(localStorage.getItem("notesGroups")) || [];
     setNotesGroups(notesGroupsData);
 
-    // Add event listener for window resize
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 450);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
   }, []);
 
   return (
@@ -43,14 +34,12 @@ function StartPage() {
           onGroupClick={handleGroupClick}
           setSelectedGroup={setSelectedGroup}
           selectedGroup={selectedGroup}
-          isSmallScreen={isSmallScreen}
         />
       </div>
       <div className={styles["notesdisplay"]}>
           <NotesDisplay
             showDefaultView={showDefaultView}
             selectedGroup={selectedGroup}
-            isSmallScreen={isSmallScreen}
           />
       </div>
     </div>

@@ -24,7 +24,7 @@
 }
 
 .default-view {
-    height: 100vh;
+  height: 100vh;
 }
 
 .app-description {
@@ -36,6 +36,7 @@
   font-weight: 400;
   line-height: 1.5rem;
   letter-spacing: 0.0275rem;
+  text-align: center;
 }
 
 .default-view {
@@ -64,24 +65,23 @@
 }
 
 .date-time-box {
-    white-space: nowrap; 
+  white-space: nowrap;
 }
 
 .note-message {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
   line-height: 1.3rem;
-
 }
 
 .saved-notes {
-    display: flex;
-    gap: 1.7rem;
+  display: flex;
+  gap: 1.7rem;
 }
 
 .date-time-box {
-    line-height: 1.3rem;
+  line-height: 1.3rem;
 }
 
 .note-group-view {
@@ -122,8 +122,7 @@
   font-weight: 600;
   line-height: normal;
   letter-spacing: 0.03rem;
-  white-space: nowrap; 
-
+  white-space: nowrap;
 }
 
 .note-input-typepad {
@@ -141,7 +140,7 @@
 
   font-size: 1rem;
   padding: 9px;
-  padding-right: 50px;
+  padding-right: 45px;
   outline: none;
   overflow-y: auto;
   resize: none;
@@ -151,14 +150,17 @@
 }
 
 .textarea-wrapper {
-  /* position: relative; */
+  position: relative;
   flex: 1;
 }
 
-.post-btn {
+.post-btn-wrapper {
   position: absolute;
-  bottom: 27px;
-  right: 32px;
+  bottom: 10px;
+  right: 18px;
+}
+
+.post-btn {
   cursor: pointer;
   width: 20px;
   height: 20px;
@@ -180,3 +182,16 @@
   border-radius: 8px;
 }
 
+@media (max-width: 520px) {
+  .default-view > img {
+    width: 100%;
+    height: auto;
+    margin-top: 6rem;
+  }
+  .app-description {
+    width: 90%;
+  }
+  .saved-notes-container {
+    padding: 1.5rem 1rem;
+  }
+}
